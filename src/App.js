@@ -5,6 +5,7 @@ import images from './data.js';
 
 
 import React, { Component } from 'react'
+import Dropdown from './Dropdown';
 
 export default class App extends Component {
   state = {
@@ -35,7 +36,8 @@ handleHornsChange = (e) => {
       <div>
         
           <Header />
-          Number of Keyword 
+          <Dropdown handleChange={this.handleKeywordChange}/>
+          {/* Number of Keyword 
                 <label>
                     <select onChange={this.handleKeywordChange}>
                     
@@ -53,7 +55,7 @@ handleHornsChange = (e) => {
                             <option value= "dragon"> dragon </option> 
                             
                     </select>
-                </label>
+                </label> */}
 
 
               {/* Number of horns
