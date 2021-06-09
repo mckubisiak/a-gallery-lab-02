@@ -9,7 +9,20 @@ export default class Dropdown extends Component {
                     <select onChange={this.props.handleChange}>
                     
                             <option value=""> All </option>
-                            <option value="narwhal"> narwhal </option>
+                            {this.props.options.map(selection => 
+                            <option value={selection}> {selection} </option>
+                            )}
+                    
+                    </select>
+                </label>
+            </div>
+        )
+    }
+}
+
+
+
+                            /* <option value="narwhal"> narwhal </option>
                             <option value="rhino"> rhino </option>
                             <option value= "unicorn"> unicorn </option>
                             <option value= "unilego"> unilego </option>
@@ -20,12 +33,4 @@ export default class Dropdown extends Component {
                             <option value= "chameleon"> chameleon </option>
                             <option value= "lizard"> lizard </option>
                             <option value= "dragon"> dragon </option> 
-                            
-                    </select>
-                </label>
-
-            </div>
-        )
-    }
-}
-
+                             */
