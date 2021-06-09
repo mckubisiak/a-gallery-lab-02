@@ -7,7 +7,7 @@ export default class ImageList extends Component {
     render() {
         let filteredKeyword = this.props.data;
         return (
-            <div>
+            <div className='image-list'>
                 
                 {
                     filteredKeyword.map( (creature, i) => <ImageItem data={creature} key={i} />)
