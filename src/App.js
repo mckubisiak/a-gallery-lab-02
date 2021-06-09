@@ -2,15 +2,13 @@ import Header from './Header';
 import ImageList from './ImageList';
 import './App.css';
 import images from './data.js';
-
-
 import React, { Component } from 'react'
+import Dropdown from './Dropdown';
 
 export default class App extends Component {
   state = {
     filterKeyword: '',
     filterHorns: ''
-    
 }
 
 handleKeywordChange = (e) => {
@@ -19,60 +17,37 @@ handleKeywordChange = (e) => {
 handleHornsChange = (e) => {
     this.setState({ filterHorns: e.target.value })
 }
+
   render() {
     let filteredKeyword = images;
-    // let render = images;
-    
-        
-    if (this.state.filterKeyword) {
-        filteredKeyword = images.filter(creature => creature.keyword === this.state.filterKeyword) 
-        // render = filteredKeyword.filter(creature => creature.horns === this.state.filterHorns)
 
-        console.log(filteredKeyword)
+    if (this.state.filterKeyword) {
+      filteredKeyword = filteredKeyword.filter(creature => creature.keyword === this.state.filterKeyword) 
     }
 
+    if (this.state.filterHorns) {
+      filteredKeyword = filteredKeyword.filter(creature => creature.horns === +this.state.filterHorns) 
+    }
+
+    const filteredCreature = Array.from(new Set(images.map(creature =>creature.keyword)))
+    const filteredHorns = Array.from(new Set(images.map(creature =>creature.horns)))
+    console.log(this.state.filterHorns);
     return (
       <div>
         
           <Header />
-          Number of Keyword 
-                <label>
-                    <select onChange={this.handleKeywordChange}>
-                    
-                            <option value=""> All </option>
-                            <option value="narwhal"> narwhal </option>
-                            <option value="rhino"> rhino </option>
-                            <option value= "unicorn"> unicorn </option>
-                            <option value= "unilego"> unilego </option>
-                            <option value= "triceratops"> triceratops </option>
-                            <option value= "markhor"> markhor </option>
-                            <option value= "mouflon"> mouflon </option>
-                            <option value= "addax"> addax </option>
-                            <option value= "chameleon"> chameleon </option>
-                            <option value= "lizard"> lizard </option>
-                            <option value= "dragon"> dragon </option> 
-                            
-                    </select>
-                </label>
+          Creature type:
+          <Dropdown 
+          handleChange={this.handleKeywordChange} 
+          options={filteredCreature} />
+          Horns:
+          <Dropdown 
+          handleChange={this.handleHornsChange} 
+          options={filteredHorns} />
 
 
-              {/* Number of horns
-                <label>
-                    <select onChange={this.handleHornsChange}>                     
-                    <option value= ''> All </option>
-                    <option value= {1} > 1 </option>
-                    <option value= {2}> 2 </option>
-                    <option value= {3}> 3 </option>
-                    <option value= {100} > too many </option>                           
-                    </select>
-                </label>
-                 */}
       <ImageList data={filteredKeyword} />
       </div>
     )
   }
 }
-
-
-
-
