@@ -8,26 +8,36 @@ import React, { Component } from 'react'
 
 export default class App extends Component {
   state = {
-    filterKeyword: ''
+    filterKeyword: '',
+    filterHorns: ''
+    
 }
 
-handleHornChange = (e) => {
+handleKeywordChange = (e) => {
     this.setState({ filterKeyword: e.target.value })
+}
+handleHornsChange = (e) => {
+    this.setState({ filterHorns: e.target.value })
 }
   render() {
     let filteredKeyword = images;
-        
+    let render = images;
+    
         
     if (this.state.filterKeyword) {
-        filteredKeyword = images.filter(creature => creature.keyword === this.state.filterKeyword)
+        filteredKeyword = images.filter(creature => creature.keyword === this.state.filterKeyword) 
+        // render = filteredKeyword.filter(creature => creature.horns === this.state.filterHorns)
+
+        console.log(filteredKeyword)
     }
+
     return (
       <div>
         
           <Header />
           Number of Keyword 
                 <label>
-                    <select onChange={this.handleHornChange}>
+                    <select onChange={this.handleKeywordChange}>
                     
                             <option value=""> All </option>
                             <option value="narwhal"> narwhal </option>
@@ -44,6 +54,19 @@ handleHornChange = (e) => {
                             
                     </select>
                 </label>
+
+
+              {/* Number of horns
+                <label>
+                    <select onChange={this.handleHornsChange}>                     
+                    <option value= ''> All </option>
+                    <option value= {1} > 1 </option>
+                    <option value= {2}> 2 </option>
+                    <option value= {3}> 3 </option>
+                    <option value= {100} > too many </option>                           
+                    </select>
+                </label>
+                 */}
       <ImageList data={filteredKeyword} />
       </div>
     )
@@ -52,11 +75,4 @@ handleHornChange = (e) => {
 
 
 
-
-/* 
-<option value= ''> All </option>
-                    <option value= {1} > 1 </option>
-                    <option value= {2}> 2 </option>
-                    <option value= {3}> 3 </option>
-                    <option value= {100} > too many </option>*/
 
