@@ -29,6 +29,7 @@ handleHornChange = (e) => {
                 <label>
                     <select onChange={this.handleHornChange}>
                     
+                            <option value=""> All </option>
                             <option value="narwhal"> narwhal </option>
                             <option value="rhino"> rhino </option>
                             <option value= "unicorn"> unicorn </option>
