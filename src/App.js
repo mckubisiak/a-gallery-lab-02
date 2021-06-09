@@ -21,7 +21,7 @@ handleHornsChange = (e) => {
 }
   render() {
     let filteredKeyword = images;
-    let render = images;
+    // let render = images;
     
         
     if (this.state.filterKeyword) {
