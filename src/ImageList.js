@@ -6,12 +6,6 @@ export default class ImageList extends Component {
 
     render() {
         let filteredKeyword = this.props.data;
-        
-        
-        // if (this.state.filterKeyword) {
-        //     filteredKeyword = this.props.data.filter(creature => creature.keyword === this.state.filterKeyword)
-        // }
-        console.log(filteredKeyword);
         return (
             <div>
                 
